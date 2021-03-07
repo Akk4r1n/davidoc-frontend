@@ -18,20 +18,20 @@ mat-sidenav {
   padding: 0;
 }
 
-a {
-  box-sizing: border-box;
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.item {
+.nav-item {
+  margin: 1%;
+  height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 50px;
-  margin-top: 2%;
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+  padding-left: 10%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item:hover {
+  background-color: rgb(236, 241, 236);
 }
 
 .item-content {

@@ -10,7 +10,7 @@ export class DocumentationService {
 
   // url for the backend endpoint to get the folder structure
   // TODO: get the url and port from a config file
-  documentationUrl = "http://185.232.71.203:8080/doc";
+  documentationUrl = "http://192.168.178.89:8080/doc";
 
   constructor(private http: HttpClient) { }
 

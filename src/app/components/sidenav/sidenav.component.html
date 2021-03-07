@@ -1,17 +1,39 @@
 <mat-sidenav-container>
 
   <!-- Drawer -->
-  <mat-sidenav class="mat-elevation-z5" [opened]="sidenavOpened" mode="side" [mode]="sidenavMode" [style.width]="sidenavWidth">
+  <mat-sidenav class="mat-elevation-z5" [opened]="sidenavOpened" [mode]="sidenavMode" [style.width]="sidenavWidth">
 
     <!-- extra div because of weird sidenav inner elements which you cant style. Reference https://github.com/angular/components/issues/13983 for the issue -->
-    <div class="sidenav-full">
+    <!-- <div class="sidenav-full">
       <h1>Menu</h1>
       <mat-divider></mat-divider>
       <div class="list">
         <a class="item" routerLink="/home" routerLinkActive="active">Home</a>
         <a class="item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       </div>
-    </div>
+    </div>-->
+
+    <mat-accordion multi *ngIf="documentation">
+      <ng-container *ngTemplateOutlet="showFilesAndFolders; context: documentation"></ng-container>
+    </mat-accordion>  
+
+    <!-- template for recursion -->
+    <ng-template #showFilesAndFolders let-Files="Files" let-Folders="Folders" let-Foldername="Foldername">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{Foldername}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- add all files-->
+        <a class="nav-item" *ngFor="let file of Files" [routerLink]="file.Path | path">
+          <mat-icon>description</mat-icon>
+          {{file.Filename}}
+        </a>
+        <!-- add all folders -->
+        <ng-container *ngFor="let folder of Folders">
+          <ng-container *ngTemplateOutlet="showFilesAndFolders; context: folder"></ng-container>
+        </ng-container>
+      </mat-expansion-panel>
+    </ng-template>
 
   </mat-sidenav>
 

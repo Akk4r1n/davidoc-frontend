@@ -1,6 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDrawerMode } from '@angular/material/sidenav';
+import { Folder } from 'src/app/interfaces/folder';
+import { DocumentationService } from 'src/app/services/documentation.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,11 +11,13 @@ import { MatDrawerMode } from '@angular/material/sidenav';
 })
 export class SidenavComponent implements OnInit {
 
+  documentation! : Folder;
+
   sidenavOpened : boolean = true;
   sidenavMode: MatDrawerMode = 'side';
   sidenavWidth : string = "25%";
 
-  constructor(breakpointObserver : BreakpointObserver) {
+  constructor(breakpointObserver : BreakpointObserver, private documentationService : DocumentationService) {
     breakpointObserver.observe([
       Breakpoints.HandsetLandscape,
       Breakpoints.HandsetPortrait
@@ -34,8 +38,14 @@ export class SidenavComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    this.getDocumentation();
+  }
 
+  getDocumentation() : void {
+    this.documentationService.getDocumentation().subscribe((data : Folder) => {
+      this.documentation = data;
+    })
   }
 
   activateTabletLayout(): void {

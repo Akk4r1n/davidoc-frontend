@@ -13,6 +13,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
+import { PathPipe } from './pipes/path.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PagenotfoundComponent,
     SidenavComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    PathPipe
   ],
   imports: [
     BrowserModule,
