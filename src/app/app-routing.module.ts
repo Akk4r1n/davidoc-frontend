@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "**", component: DocviewerComponent }
+  { path: "pagenotfound", component: PagenotfoundComponent },
+  { path: "**", component: DocviewerComponent },
 ];
 
 @NgModule({
