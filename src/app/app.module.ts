@@ -14,6 +14,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
 import { PathPipe } from './pipes/path.pipe';
+import { DocviewerComponent } from './components/docviewer/docviewer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PathPipe } from './pipes/path.pipe';
     PagenotfoundComponent,
     SidenavComponent,
     ToolbarComponent,
-    PathPipe
+    PathPipe,
+    DocviewerComponent
   ],
   imports: [
     BrowserModule,
