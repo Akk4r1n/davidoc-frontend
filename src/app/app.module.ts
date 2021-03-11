@@ -12,9 +12,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 import { MarkdownModule } from 'ngx-markdown';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PathPipe } from './pipes/path.pipe';
 import { DocviewerComponent } from './components/docviewer/docviewer.component';
+import { NoCacheHeadersInterceptor } from './HttpInterceptor';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,13 @@ import { DocviewerComponent } from './components/docviewer/docviewer.component';
     HttpClientModule,
     MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoCacheHeadersInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
