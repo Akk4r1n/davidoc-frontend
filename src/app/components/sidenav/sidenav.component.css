@@ -10,7 +10,7 @@ mat-sidenav {
   height: 100%;
   box-sizing: border-box;
   text-align: center;
-  background-color: #e7e7de;
+  background-color: #d9e7f1;
 }
 
 .list {
@@ -48,6 +48,10 @@ mat-sidenav {
 
 h1 {
   margin-bottom: 0;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important;
 }
 
 mat-icon {
