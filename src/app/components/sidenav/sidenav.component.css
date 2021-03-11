@@ -7,10 +7,15 @@ mat-sidenav-container {
 
 mat-sidenav {
   padding: 1%;
-  height: 100%;
+  height: calc(100% - 64px);
   box-sizing: border-box;
   text-align: center;
   background-color: #d9e7f1;
+}
+
+mat-accordion {
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .list {
